@@ -1,6 +1,6 @@
 # Test script to load crypto datasets - phase 4 models only
 # phase3 script more descriptive
-# shift option f to use autopep8 in VS Code
+# shift option f to use autopep8 in VS Code (.py files only)
 
 # Package imports
 import pandas as pd

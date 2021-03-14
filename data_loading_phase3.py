@@ -5,7 +5,6 @@
 import psycopg2
 from sqlalchemy import create_engine
 import pandas as pd
-import pandas_ta as ta
 from ta import add_all_ta_features  # This auto calculates your TI columns
 from ta.utils import dropna
 
