@@ -1,5 +1,3 @@
-### **Readme Draft**
-
 ## Capstone Project: Cryptocurrency forecasting and Technical Indicator Analysis
 
 <div style="text-align: justify">
@@ -29,16 +27,14 @@ Due to the volatility of cryptocurrencies, one shouldn't expect high accuracy sc
 
 ### Data Collection and Feature Engineering
 
-> Add notebook link to header for all 'phases' (4 total)
-
 The first step would be to collect and prepare our data. Fortunately for cryptocurrencies there are many free resources that allow you to do this. Our data source comes from an API provided by [Coinbase Pro](https://pro.coinbase.com), a well-known broker of cryptocurrencies. After creating a free account, the API allows you to download a set amount of data per given timeframe so you would have to wrap an iterative function in Python to tell the API to continuously download your datasets until you have the necessary amount.
 
 For each of our 6 cryptocurrencies, we have a tabular dataset that consists of hourly price observations of each coin against the US Dollar across 5 columns that should be familiar to traders:
 
-- Open 
+- Open
 - High
 - Low
-- Close 
+- Close
 - Volume Traded
 
 Then, you would also need to find a way to calculate your technical Indicators based on your OHLCV data. Fortunately there exists a Python package that does this for us automatically, called `ta`, which provides us with 83 total technical indicators across 5 categories:
@@ -97,11 +93,13 @@ The goal here is to see which classifier type is best suited for cryptocurrencie
 
 ### Summary
 
-As expected the accuracy scores for both models aren't that great, showing only a similar pattern that undervalues the predicted prices in the ARIMA models and a ~5% improvement over baseline scores in the classifier models. 
+As expected the accuracy scores for both models aren't that great, showing only a similar pattern that undervalues the predicted prices in the ARIMA models and a ~5% improvement over baseline scores in the classifier models.
 
 It remains tough to estimate the price trends of a volatile asset class such as cryptocurrencies but the caveat is that it leaves room for one to explore other models or even features that may affect price trends. For instance, the use deep learning models or features derived from natural language processing methods where there is heightened traffic of people discussing the coins on social media. Overall it was a good learning experience for someone who wants to get into machine learning and cryptocurrency trends.
 
 **Required Dependencies**
+
+See the requirements.txt file for more specifics
 
 - NumPy
 - Pandas
