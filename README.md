@@ -23,7 +23,7 @@ Technical indicators are heuristic or pattern-based signals produced by calculat
 
 The bulk of this project will be based on two concurrent machine learning models, the first being a regressor based forecasting model to predict future prices and the second being a collection of classifier based models to determine and rank the best technical indicators.
 
-Due to the volatility of cryptocurrencies, one shouldn't expect high accuracy scores for the models used in this project. The success metrics I have set are to establish a pattern for our forecasting model and any improvement over baseline scores, however small, for our classifier models. The models are structured such that I can revisit them in the future and tinker with new models and methods to improve the scores.
+Due to the volatility of cryptocurrencies, one shouldn't expect high accuracy scores for the models used in this project. The success metrics I have set are to establish a pattern for our forecasting model and any improvement over baseline scores, however small, for our classifier models. The models are structured such that I can revisit them in the future and tinker with new models and methods, as well as add new data, to improve the scores.
 
 ### Data Collection and Feature Engineering
 
@@ -49,13 +49,11 @@ The datasets are then saved in a csv, or better yet, an SQL database (local).
 
 ### Exploratory Data Analysis
 
-> Remember to add **NBViewer link** (when project uploaded to a public repo in Github)
-
 The EDA can be helpful here to visualize how a trader would typically analyze the trends and patterns of each coin. Our datasets, which are organized in hourly intervals can be resampled to show daily intervals instead, technical indicators included. With `plotly`, we can view the charts and make our own qualitative inferences for each coin. 
 
-See the charts on this [NBViewer page]().
+See the charts in the EDA notebook in this [NBViewer page](https://nbviewer.jupyter.org/github/marzimin/Project-1-Cryptocurrencies/tree/master/).
 
-### A: ARIMA Models for 5 day forecasts
+### Model 1: ARIMA Models for 5 day forecasts
 
 Our first model is the ARIMA based regressor models, constructed with a Python package called `pmdarima`, which allows you to construct your models in a `sklearn` style format. I have also added other evaluation metrics in addition to the model, as well as a 120 hour (5 day) forecast, based on the model predictions of the close price, for each coin. You can then choose your selection of technical indicators (our exogenous features) and re-run the model multiple times to see how it performs. 
 
@@ -68,7 +66,7 @@ The evaluation metrics are as follows:
 - Residual plots
 - RMSE plots
 
-### B: Classifier based models for Technical Indicator Analysis
+### Model 2: Classifier based models for Technical Indicator Analysis
 
 Our second classification models will evaluate our 83 technical indicators (or features) to find which one (or group) would be best suited to fit our ARIMA models. Unlike the regressor model, some minor feature engineering needs to be made for these models:
 
@@ -91,11 +89,13 @@ The classifier models used here vary from:
 
 The goal here is to see which classifier type is best suited for cryptocurrencies where we can rank their accuracy scores and find the feature importances (our technical indicators).
 
-### Summary
+### Results
 
-As expected the accuracy scores for both models aren't that great, showing only a similar pattern that undervalues the predicted prices in the ARIMA models and a ~5% improvement over baseline scores in the classifier models.
+As expected the accuracy scores for both models aren't that great, showing only a similar pattern that generally undervalues the predicted prices in the ARIMA models and a ~5% improvement over baseline scores in the classifier models. This is also not taking into account of the larger fluctuations of cryptocurrencies throughout the month of February, with volatility exceeding previous periods that are in this dataset. Regarding the most important technical indicators, we are able to identify a handful of the most important ones per coin but not to a highly signifcant degree to have them stand out from the other indicators. 
 
-It remains tough to estimate the price trends of a volatile asset class such as cryptocurrencies but the caveat is that it leaves room for one to explore other models or even features that may affect price trends. For instance, the use deep learning models or features derived from natural language processing methods where there is heightened traffic of people discussing the coins on social media. Overall it was a good learning experience for someone who wants to get into machine learning and cryptocurrency trends.
+### Key Learnings
+
+It remains tough to estimate the price trends of a volatile asset class such as cryptocurrencies but the caveat is that it leaves room for one to explore other models, datasets, and even external features that may affect price trends. For instance, the use deep learning models or features derived from natural language processing methods, one example being where there is heightened traffic of people discussing the coins on social media and its effects on price. Other examples to explore could include other indexes such as gold or foreign exchanges. Overall it was a good learning experience for someone who wants to get into machine learning and cryptocurrency trends.
 
 **Required Dependencies**
 
