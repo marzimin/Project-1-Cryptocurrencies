@@ -1,1 +1,5 @@
+# Ignore cache files
 __pycache__/data_loading_phase4.cpython-38.pyc
+
+# Ignore IDE specific files
+.vscode/

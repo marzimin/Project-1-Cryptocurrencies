@@ -21,9 +21,9 @@ Technical indicators are heuristic or pattern-based signals produced by calculat
 
 ### Approach and Success Metrics
 
-The bulk of this project will be based on two concurrent machine learning models, the first being a regressor based forecasting model to predict future prices and the second being a collection of classifier based models to determine and rank the best technical indicators.
+The bulk of this project will be based on two concurrent machine learning models, the first being a regressor based forecasting model to predict future prices and the second being a collection of classifier based models to determine and rank the best technical indicators. There is also a third Deep Learning model, using an LSTM neural network to see if an unsupervised learning model, measured by accuracy scores, can perform betther than the classifier models. 
 
-Due to the volatility of cryptocurrencies, one shouldn't expect high accuracy scores for the models used in this project. The success metrics I have set are to establish a pattern for our forecasting model and any improvement over baseline scores, however small, for our classifier models. The models are structured such that I can revisit them in the future and tinker with new models and methods, as well as add new data, to improve the scores.
+Due to the volatility of cryptocurrencies, one shouldn't expect high accuracy scores for any the models used in this project. The success metrics I have set are to establish a pattern for our forecasting model and any improvement over baseline scores, however small, for our classifier models. The models are structured such that I can revisit them in the future and tinker with new models and methods, as well as add new data, to improve the scores.
 
 ### Data Collection and Feature Engineering
 
@@ -89,13 +89,18 @@ The classifier models used here vary from:
 
 The goal here is to see which classifier type is best suited for cryptocurrencies where we can rank their accuracy scores and find the feature importances (our technical indicators).
 
+### Model 3: LSTM Neural Networks
+
+I have added a third, minor part to this project that goes over the implementation of a TensorFlow + Keras model to identify if a Deep Learning model can outperform the prior classification models in predicting binary price movements of our cyptocurrencies. With the data loaded and preprocessed similarly to the earlier models, the TensorFlow model here consists of 200 epochs, and constructed with 3 LSTM layers, followed by 6 Dense layers, each layer halving from an initial 512 nodes to our binary outputs. The model is tracked and measured by its accuracy and loss on the predictions generated from both the train and validation (test sets).
 ### Results
 
-As expected the accuracy scores for both models aren't that great, showing only a similar pattern that generally undervalues the predicted prices in the ARIMA models and a ~5% improvement over baseline scores in the classifier models. This is also not taking into account of the larger fluctuations of cryptocurrencies throughout the month of February, with volatility exceeding previous periods that are in this dataset. Regarding the most important technical indicators, we are able to identify a handful of the most important ones per coin but not to a highly signifcant degree to have them stand out from the other indicators. 
+As expected the accuracy scores for the first two models aren't that great, showing only a similar pattern that generally undervalues the predicted prices in the ARIMA models and a ~5% improvement over baseline scores in the classifier models. This is also not taking into account of the larger fluctuations of cryptocurrencies throughout the month of February, with volatility exceeding previous periods that are in this dataset. Regarding the most important technical indicators, we are able to identify a handful of the most important ones per coin but not to a highly signifcant degree to have them stand out from the other indicators.
+
+As for the LSTM model, it appears that the scores also did not improve much from baseline and performed similarly to our classifier models, averaging a ~5% improvement on their test sets. More model tinkering, in addition to new data would be needed.
 
 ### Key Learnings
 
-It remains tough to estimate the price trends of a volatile asset class such as cryptocurrencies but the caveat is that it leaves room for one to explore other models, datasets, and even external features that may affect price trends. For instance, the use deep learning models or features derived from natural language processing methods, one example being where there is heightened traffic of people discussing the coins on social media and its effects on price. Other examples to explore could include other indexes such as gold or foreign exchanges. Overall it was a good learning experience for someone who wants to get into machine learning and cryptocurrency trends.
+It remains tough to estimate the price trends of a volatile asset class such as cryptocurrencies but the caveat is that it leaves room for one to explore other models, datasets, and even external features that may affect price trends. For instance, implementing new features derived from natural language processing methods, one example being where there is heightened traffic of people discussing the coins on social media and its effects on price. Other examples to explore could include other indexes such as gold or foreign exchanges to increase the amount of data that we can analyse. Overall it was a good learning experience for someone who wants to get into machine learning and cryptocurrency trends.
 
 **Required Dependencies**
 
